@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Header from '../../common/header/Header';
-import VehicalDetails from './VehicalDetailsTable';
+import VehicleDetails from './VehicleDetailsTable';
 
 export class VehicalManagement extends Component {
 
@@ -14,9 +14,9 @@ export class VehicalManagement extends Component {
     render() {
         return (
             <Fragment>
-                <Header isLoggedIn={true} />
+                <Header isLoggedIn={sessionStorage.getItem('login')} {...this.props} />
                 <div style={{ width: '75%', margin: 'auto', marginTop: '10rem', marginBottom: '10rem' }}>
-                    <VehicalDetails />
+                    <VehicleDetails />
                 </div>
             </Fragment>
         )

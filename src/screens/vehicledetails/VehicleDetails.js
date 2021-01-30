@@ -2,11 +2,11 @@ import React, { Component, Fragment } from 'react';
 import Header from '../../common/header/Header';
 import DetailsTable from './DetailsTable';
 
-class VehicalDetails extends Component {
+class VehicleDetails extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
+                <Header isLoggedIn={sessionStorage.getItem('login')} />
                 <div style={{ marginTop: '8rem', marginBottom: '5rem', display: 'flex', justifyContent: 'center' }}>
                     <DetailsTable />
                 </div>
@@ -15,4 +15,4 @@ class VehicalDetails extends Component {
     }
 }
 
-export default VehicalDetails
+export default VehicleDetails

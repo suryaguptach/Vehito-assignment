@@ -28,7 +28,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Link } from 'react-router-dom';
 import LogoutModal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -261,9 +260,9 @@ export default function Header(props) {
         setAnchoEl(null);
     }
 
-    const vehicalManagementClickHandler = () => {
-        if (isLoggedIn) {
-            history.push('user/vehical/management');
+    const vehicleManagementClickHandler = () => {
+        if (sessionStorage.getItem('login')) {
+            history.push('/user/vehicle/management');
         } else {
             setMessage("Please Login First!")
             setErrorSnackbar(true);
@@ -288,6 +287,7 @@ export default function Header(props) {
         setIsLoggedIn(false);
         sessionStorage.removeItem('login');
         setLogoutModal(false);
+        history.push('/');
     }
 
     const onNoLogout = () => {
@@ -330,8 +330,8 @@ export default function Header(props) {
                                 <ListItemText primary={"Dashboard"} />
                             </ListItem>
                             <div className={classes.grow} />
-                            <ListItem button onClick={vehicalManagementClickHandler} key={"header_vehical_management"}>
-                                <ListItemText primary={"Vehical Management"} />
+                            <ListItem button onClick={vehicleManagementClickHandler} key={"header_vehicle_management"}>
+                                <ListItemText primary={"Vehicle Management"} />
                             </ListItem>
                         </List>}
                     <div className={classes.grow} />
@@ -345,13 +345,9 @@ export default function Header(props) {
                                 <Menu id="profile-menu" open={menuState} onClose={onMenuClose}
                                     anchorEl={anchorEl} getContentAnchorEl={null}
                                     anchorOrigin={{ vertical: "bottom", horizontal: "left" }} keepMounted>
-                                    <MenuItem style={{ minHeight: 48 }}><Typography><Link
-                                        to={""} style={{ textDecoration: 'none', color: 'black' }}>My
-                                        Profile</Link></Typography></MenuItem>
-                                    <MenuItem style={{ minHeight: 48 }} onClick={openLoggoutModal}><Link to={""} style={{
-                                        textDecoration: 'none',
-                                        color: 'black'
-                                    }}><Typography>Logout</Typography></Link></MenuItem>
+                                    <MenuItem style={{ minHeight: 48 }}><Typography>My
+                                        Profile</Typography></MenuItem>
+                                    <MenuItem style={{ minHeight: 48 }} onClick={openLoggoutModal}><Typography>Logout</Typography></MenuItem>
                                 </Menu>
                             </div>}
                     </div>
@@ -375,8 +371,8 @@ export default function Header(props) {
                     <ListItem button onClick={dashboardClickHandler} key={"dashboard"}>
                         <ListItemText primary={"Dashboard"} />
                     </ListItem>
-                    <ListItem button onClick={vehicalManagementClickHandler} key={"vehical_management"}>
-                        <ListItemText primary={"Vehical Management"} />
+                    <ListItem button onClick={vehicleManagementClickHandler} key={"vehicle_management"}>
+                        <ListItemText primary={"Vehicle Management"} />
                     </ListItem>
                 </List>
             </Drawer>

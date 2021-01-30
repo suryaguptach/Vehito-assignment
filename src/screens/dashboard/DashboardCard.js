@@ -5,7 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { Vehicals } from './VehicalDetails';
+import { Vehicles } from './DashboardVehicleDetails';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -23,26 +23,26 @@ export default function DashboardCard() {
     const classes = useStyles();
     let history = useHistory();
 
-    const vehicalDetailsHandler = (vehicalMode) => {
-        history.push('/vehical/' + vehicalMode)
+    const vehicleDetailsHandler = (vehicleMode) => {
+        history.push('/vehicle/' + vehicleMode)
     }
 
     return (
         <Fragment>
-            {Vehicals.map((vehicalDetails) =>
-                <Card onClick={ () => vehicalDetailsHandler(vehicalDetails.mode)} key={vehicalDetails.id} className={classes.root}>
+            {Vehicles.map((vehicleDetails) =>
+                <Card onClick={ () => vehicleDetailsHandler(vehicleDetails.mode)} key={vehicleDetails.id} className={classes.root}>
                     <CardActionArea>
                         <CardMedia
                             className={classes.media}
-                            image={vehicalDetails.imgsrc}
+                            image={vehicleDetails.imgsrc}
                             component="img"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                {vehicalDetails.title}
+                                {vehicleDetails.title}
                             </Typography>
                             <Typography variant="body2" component="p">
-                                {"Total Vehicals in " + vehicalDetails.mode + " mode is " + vehicalDetails.total}
+                                {"Total Vehicles in " + vehicleDetails.mode + " mode is " + vehicleDetails.total}
                             </Typography>
                         </CardContent>
                     </CardActionArea>

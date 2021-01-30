@@ -15,7 +15,7 @@ import RevertIcon from "@material-ui/icons/NotInterestedOutlined";
 import { Button, Typography } from "@material-ui/core";
 import Modal from 'react-modal';
 import { FormControl, InputLabel } from '@material-ui/core';
-import './VehicalDetailsTable.css';
+import './VehicleDetailsTable.css';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -80,7 +80,7 @@ const CustomTableCell = ({ row, name, onChange }) => {
     );
 };
 
-export default function VehicalDetails() {
+export default function VehicleDetails() {
     const [rows, setRows] = React.useState([
         createData("Maruti 800", 2000, "AAA", 2400001, "Diesel"),
         createData("Maruti 801", 2000, "AAA", 2400001, "Diesel"),
@@ -142,7 +142,7 @@ export default function VehicalDetails() {
         onToggleEditMode(id);
     };
 
-    const addVehicalHandler = () => {
+    const addVehicleHandler = () => {
         setModal('');
         setAssignedDriver('');
         setChasisNumber('');
@@ -177,8 +177,8 @@ export default function VehicalDetails() {
 
     const submitClickHandler = () => {
         setModalIsOpen(false);
-        let newVehicalDeatils = createData(modal, manufacturedYear, assignedDriver, chasisNumber, engineType);
-        setRows([...rows, newVehicalDeatils]);
+        let newVehicleDeatils = createData(modal, manufacturedYear, assignedDriver, chasisNumber, engineType);
+        setRows([...rows, newVehicleDeatils]);
     }
 
     return (
@@ -234,46 +234,46 @@ export default function VehicalDetails() {
                 </Table>
             </Paper>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-                <Button onClick={addVehicalHandler} style={{ backgroundColor: 'lightpink' }}>Add</Button>
+                <Button onClick={addVehicleHandler} style={{ backgroundColor: 'lightpink' }}>Add</Button>
             </div>
             <Modal
                 ariaHideApp={false}
                 isOpen={modalIsOpen}
-                contentLabel="New Vehical Details"
+                contentLabel="New Vehicle Details"
                 onRequestClose={closeModalHandler}
                 style={customStyles}>
                 <Typography style={{ textAlign: 'center' }} variant="h5" component="h2">
-                    New Vehical Details
+                    New Vehicle Details
                 </Typography>
                 <br />
-                <FormControl required className="vehical-details-input">
+                <FormControl required className="vehicle-details-input">
                     <InputLabel htmlFor="modal">Modal</InputLabel>
                     <Input id="modal" type="text" value={modal}
                         modal={modal}
                         onChange={modalChangeHandler} />
                 </FormControl>
                 <br /><br />
-                <FormControl required className="vehical-details-input">
+                <FormControl required className="vehicle-details-input">
                     <InputLabel htmlFor="mfgYear">Manufactured Year</InputLabel>
                     <Input id="mfgYear" type="text" value={manufacturedYear}
                         manufacturedyear={manufacturedYear}
                         onChange={manufacturedYearChangeHandler} />
                 </FormControl>
                 <br /><br />
-                <FormControl required className="vehical-details-input">
+                <FormControl required className="vehicle-details-input">
                     <InputLabel htmlFor="assignedDriver">Assigned Driver</InputLabel>
                     <Input id="assignedDriver" type="text" value={assignedDriver}
                         assigneddriver={assignedDriver} onChange={assignedDriverChangeHandler} />
                 </FormControl>
                 <br /><br />
-                <FormControl required className="vehical-details-input">
+                <FormControl required className="vehicle-details-input">
                     <InputLabel htmlFor="chasisnumber">Chasis Number</InputLabel>
                     <Input id="chasisnumber" type="text" value={chasisNumber}
                         chasisnumber={chasisNumber}
                         onChange={chasisNumberChangeHandler} />
                 </FormControl>
                 <br /><br />
-                <FormControl required className="vehical-details-input">
+                <FormControl required className="vehicle-details-input">
                     <InputLabel htmlFor="engineType">Engine Type</InputLabel>
                     <Input id="engineType" type="text" value={engineType}
                         enginetype={engineType}

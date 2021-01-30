@@ -6,7 +6,7 @@ class Home extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
+                <Header isLoggedIn={sessionStorage.getItem('login')} />
                 <div style={{ marginTop: '6rem' }}>
                     <CustomCard />
                 </div>
